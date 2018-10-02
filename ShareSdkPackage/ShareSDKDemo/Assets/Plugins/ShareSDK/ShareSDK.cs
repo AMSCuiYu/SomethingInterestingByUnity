@@ -17,11 +17,11 @@ namespace cn.sharesdk.unity3d
 		//配置ShareSDK AppKey
 		//注:此处区分仅为demo测试而区分，实际使用时可以不区分安卓或iOS
 		 #if UNITY_ANDROID
-		public string appKey = "moba6b6c6d6";
-		public string appSecret = "b89d2427a3bc7ad1aea1e1e8c1d36bf3";
+		public string appKey = "28002b7539c20";
+		public string appSecret = "a177ed68843f5fe3d30c9a8e3261cae5";
 		 #elif UNITY_IPHONE
-		public string appKey = "moba6b6c6d6";
-		public string appSecret = "b89d2427a3bc7ad1aea1e1e8c1d36bf3";
+		public string appKey = "28002b7539c20";
+		public string appSecret = "a177ed68843f5fe3d30c9a8e3261cae5";
 		 #endif
 
 		public DevInfoSet devInfo;

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using cn.sharesdk.unity3d;
 using System;
+using UnityEngine.UI;
+using System.IO;
 
 public class Share : MonoBehaviour 
 {
 	private static ShareSDK shareSDK;
+    
+    public Text ConsoleText;
 
 	void Start()
 	{
@@ -26,15 +30,16 @@ public class Share : MonoBehaviour
     {
         if(state == ResponseState.Success)
         {
-            Debug.Log("Success");
+            ConsoleText.text = "Success";
+            
         }
         else if(state == ResponseState.Fail)
         {
-            Debug.Log("Fail");
+            ConsoleText.text = "Fail";
         }
         else if(state == ResponseState.Cancel)
         {
-            Debug.Log("Cancel");
+            ConsoleText.text = "Cancel";
         }
     }
 
@@ -42,15 +47,15 @@ public class Share : MonoBehaviour
     {
         if(state == ResponseState.Success)
         {
-            Debug.Log("Success");
+            ConsoleText.text = "Success";
         }
         else if(state == ResponseState.Fail)
         {
-            Debug.Log("Fail");
+            ConsoleText.text = "Fail";
         }
         else if(state == ResponseState.Cancel)
         {
-            Debug.Log("Cancel");
+            ConsoleText.text = "Cancel";
         }
     }
 
@@ -58,15 +63,15 @@ public class Share : MonoBehaviour
     {
         if(state == ResponseState.Success)
         {
-            Debug.Log("Success");
+            ConsoleText.text = "Success";
         }
         else if(state == ResponseState.Fail)
         {
-            Debug.Log("Fail");
+            ConsoleText.text = "Fail";
         }
         else if(state == ResponseState.Cancel)
         {
-            Debug.Log("Cancel");
+            ConsoleText.text = "Cancel";
         }
     }
 
@@ -74,15 +79,15 @@ public class Share : MonoBehaviour
     {
         if(state == ResponseState.Success)
         {
-            Debug.Log("Success");
+            ConsoleText.text = "Success";
         }
         else if(state == ResponseState.Fail)
         {
-            Debug.Log("Fail");
+            ConsoleText.text = "Fail";
         }
         else if(state == ResponseState.Cancel)
         {
-            Debug.Log("Cancel");
+            ConsoleText.text = "Cancel";
         }
     }
 
@@ -90,20 +95,20 @@ public class Share : MonoBehaviour
     {
         if(state == ResponseState.Success)
         {
-            Debug.Log("Success");
+            ConsoleText.text = "Success";
         }
         else if(state == ResponseState.Fail)
         {
-            Debug.Log("Fail");
+            ConsoleText.text = "Fail";
         }
         else if(state == ResponseState.Cancel)
         {
-            Debug.Log("Cancel");
+            ConsoleText.text = "Cancel";
         }
     }
 	#endregion
 
-    #region 静态成员
+    #region 成员
     ///<summary>
     ///授权QQ。
     ///</summary>
@@ -115,7 +120,7 @@ public class Share : MonoBehaviour
     /// <summary>
     /// 取消授权QQ。
     /// </summary>
-    public static void QQCancelAuthorize()
+    public void QQCancelAuthorize()
     {
         shareSDK.CancelAuthorize(PlatformType.QQ);
     }
@@ -124,7 +129,7 @@ public class Share : MonoBehaviour
     /// 得到QQ授权信息。
     /// </summary>
     /// <returns></returns>
-    public static Hashtable QQGetAuthInfo()
+    public Hashtable QQGetAuthInfo()
     {
         return shareSDK.GetAuthInfo(PlatformType.QQ);
     }
@@ -133,9 +138,9 @@ public class Share : MonoBehaviour
     /// 添加QQ好友。
     /// </summary>
     /// <param name="account">账号</param>
-    public static int QQAddFriend(string account)
+    public void QQAddFriend(string account)
     {
-        return shareSDK.AddFriend(PlatformType.QQ, account);
+        shareSDK.AddFriend(PlatformType.QQ, account);
     }
 
     /// <summary>
@@ -143,21 +148,45 @@ public class Share : MonoBehaviour
     /// </summary>
     /// <param name="count">每页的数量</param>
     /// <param name="page">页数</param>
-    public static int QQGetFriendList(int count, int page)
+    public void QQGetFriendList(int count, int page)
     {
-        return shareSDK.GetFriendList(PlatformType.QQ, count, page);
+        shareSDK.GetFriendList(PlatformType.QQ, count, page);
     }
 
     /// <summary>
     /// 得到用户信息。
     /// </summary>
     /// <returns></returns>
-    public static int QQGetUserInfo()
+    public void QQGetUserInfo()
     {
-        return shareSDK.GetUserInfo(PlatformType.QQ);
+        shareSDK.GetUserInfo(PlatformType.QQ);
     }
 
+    /// <summary>
+    /// 截屏并分享。
+    /// </summary>
+    /// <param name="title">分享的标题</param>
+    /// <param name="content">分享的文字内容</param>
+    public void QQScreenshotAndShare(string title, string content)
+    {
+        ScreenCapture.CaptureScreenshot("Screenshot");
+        ShareContent shareContent = new ShareContent();
+        shareContent.SetTitle(title);
+        shareContent.SetText(content);
+        shareContent.SetImageUrl("Screenshot");
+        try
+        {
+            File.Delete(Application.dataPath + @"\Screenshot");
+            ConsoleText.text = "ShareSuccess";
+        }
+        catch(Exception ex)
+        {
+            ConsoleText.text = ex.Message;
+        }
 
+        shareSDK.ShareContent(PlatformType.QQ, shareContent);
+
+    }
 
     #endregion
 }

@@ -111,13 +111,13 @@ namespace cn.sharesdk.unity3d
 		#if UNITY_ANDROID
 		public const int type = (int) PlatformType.QQ;
 		public string SortId = "2";
-		public string AppId = "100371282";
-		public string AppKey = "aed9b0303e3ed1e27bae87c33761161d";
+		public string AppId = "1107868056";
+		public string AppKey = "uT0kKzIis8Mfs1wI";
 		public bool ShareByAppClient = true;
 		#elif UNITY_IPHONE
 		public const int type = (int) PlatformType.QQ;
-		public string app_id = "100371282";
-		public string app_key = "aed9b0303e3ed1e27bae87c33761161d";
+		public string app_id = "1107868056";
+		public string app_key = "uT0kKzIis8Mfs1wI";
 		public string auth_type = "both";  //can pass "both","sso",or "web" 
 		#endif
 	}
@@ -128,13 +128,13 @@ namespace cn.sharesdk.unity3d
 		#if UNITY_ANDROID
 		public string SortId = "1";
 		public const int type = (int) PlatformType.QZone;
-		public string AppId = "100371282";
-		public string AppKey = "ae36f4ee3946e1cbb98d6965b0b2ff5c";
+		public string AppId = "1107868056";
+		public string AppKey = "uT0kKzIis8Mfs1wI";
 		public bool ShareByAppClient = true;
 		#elif UNITY_IPHONE
 		public const int type = (int) PlatformType.QZone;
-		public string app_id = "100371282";
-		public string app_key = "aed9b0303e3ed1e27bae87c33761161d";
+		public string app_id = "1107868056";
+		public string app_key = "uT0kKzIis8Mfs1wI";
 		public string auth_type = "both";  //can pass "both","sso",or "web" 
 		#endif
 	}

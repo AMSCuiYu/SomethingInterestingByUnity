@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.w.Pe"
+    package="com.WildTorrent.WildTorrentGame"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -22,7 +22,7 @@
         android:targetSdkVersion="17" />
 
     <application
-    	android:name="com.mob.MobApplication">
+    	android:name="com.WildTorrent.WildTorrentGame">
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
